@@ -75,6 +75,7 @@ app.post('/sendOTP', jsonParser, (req, res) => {
 
     var add_new_data=`INSERT INTO mobileUserData (otp, phone) VALUES ("${otp}", "${mobile_no}")`;
     pool_con.query(add_new_data,(err,result)=>{
+      console.log('row_length>', result.affectedRows)
       if(!err){
         console.log('phone and otp inserted to DB!')
       }
@@ -114,6 +115,7 @@ app.post('/verifyOTP', jsonParser, (req, res) => {
     // otpExist.isVerified = true;
 
     var find_data =`SELECT otp from mobileuserdata WHERE phone='${mobile_no}'`;
+
     pool_con.query(find_data,(err,result)=>{ 
       console.log('find_data>>', result[0].otp)
       if(otp != result[0].otp){ 
