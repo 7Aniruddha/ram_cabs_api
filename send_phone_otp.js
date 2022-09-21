@@ -9,7 +9,6 @@ function AddMinutesToDate(date, minutes) {
   return new Date(date.getTime() + minutes*60000);
 }
 
-
 // create application/json parser
 var jsonParser = bodyParser.json()
  
